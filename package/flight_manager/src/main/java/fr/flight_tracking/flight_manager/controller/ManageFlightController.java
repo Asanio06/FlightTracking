@@ -38,5 +38,10 @@ public class ManageFlightController {
         flightService.closeFlight(flightId);
     }
 
+    @DeleteMapping("/{flightId}")
+    public void deleteFlight(@PathVariable("flightId") UUID flightId) {
+        flightService.deleteFlight(flightId);
+    }
+
 
 }

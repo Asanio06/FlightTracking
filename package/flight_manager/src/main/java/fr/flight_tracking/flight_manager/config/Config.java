@@ -1,4 +1,4 @@
-package fr.flight_tracking.flight_manager;
+package fr.flight_tracking.flight_manager.config;
 
 
 import org.springframework.context.annotation.Configuration;

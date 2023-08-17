@@ -58,4 +58,11 @@ public class FlightService {
 
         flightRepository.save(flight);
     }
+
+    public void deleteFlight(UUID flightId){
+        var flight = flightRepository.findById(flightId).orElseThrow(() -> new FlightException.FlightNotFoundException(flightId));
+
+        flightRepository.delete(flight);
+
+    }
 }
