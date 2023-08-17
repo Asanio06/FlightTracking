@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/flight")
 public class ManageFlightController {
@@ -28,6 +30,12 @@ public class ManageFlightController {
 
         return ResponseEntity.ok(new CreateFlightResponse(createdFlight.getId()));
 
+    }
+
+
+    @PutMapping("/{flightId}/close")
+    public void closeFlight(@PathVariable("flightId") UUID flightId) {
+        flightService.closeFlight(flightId);
     }
 
 

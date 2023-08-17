@@ -1,31 +1,30 @@
 CREATE TYPE flight_step_enum AS ENUM (
-    'none',
-    'ground',
-    'boarding',
-    'pushback',
-    'block_on',
-    'taxi_out',
-    'takeoff',
-    'initial_climb',
-    'climb',
-    'cruise',
-    'descent',
-    'approach',
-    'landing',
-    'taxi_in',
-    'block_off',
-    'deboarding',
-    'parked',
-    'emergency',
-    'crashed',
-    'diversion'
+    'NONE',
+    'GROUNG',
+    'BOARDING',
+    'PUSHBACK',
+    'BLOCK_ON',
+    'TAXI_OUT',
+    'TAKEOFF',
+    'INITIAL_CLIMB',
+    'CLIMB',
+    'CRUISE',
+    'DESCENT',
+    'APPROACH',
+    'LANDING',
+    'TAXI_IN',
+    'BLOCK_OFF',
+    'DEBOARDING',
+    'PARKED',
+    'EMERGENCY',
+    'CRASHED',
+    'DIVERSION'
     );
 
 CREATE TYPE flight_status_enum AS ENUM (
-    'in_progress',
-    'deleted',
-    'finished'
-    'finished'
+    'IN_PROGRESS',
+    'DELETED',
+    'FINISHED'
     );
 
 

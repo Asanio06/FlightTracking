@@ -44,12 +44,10 @@ public class Flight extends Auditor {
     private String pilotName;
 
     @Column
-    @Enumerated(EnumType.STRING)
     @Type(PostgreSQLEnumType.class)
     private FlightStatus status;
 
     @Column
-    @Enumerated(EnumType.STRING)
     @Type(PostgreSQLEnumType.class)
     private FlightStep flightStep;
 
