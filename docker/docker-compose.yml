@@ -4,17 +4,19 @@ services:
     image: postgres:15.4-alpine
     restart: always
     healthcheck:
-      test: [ "CMD", "pg_isready", "-U", $JAVASTARTER_DATABASE_USER, "-d", $JAVASTARTER_DATABASE_NAME ]
+      test: [ "CMD", "pg_isready", "-U", $POSTGRES_USER, "-d", $POSTGRES_DB ]
       timeout: 10s
       retries: 10
+    ports:
+      - "5432:5432"
     environment:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
-      - postgres:/var/lib/postgresql/data
+      - flightdb:/var/lib/postgresql/data
 
 
 
 volumes:
-  postgres:
+  flightdb:

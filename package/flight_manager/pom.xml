@@ -15,6 +15,7 @@
 	<description>Gestion du début et de la fin de vol</description>
 	<properties>
 		<java.version>17</java.version>
+		<hypersistence-utils.version>3.5.1</hypersistence-utils.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -48,6 +49,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>io.hypersistence</groupId>
+			<artifactId>hypersistence-utils-hibernate-62</artifactId>
+			<version>${hypersistence-utils.version}</version>
 		</dependency>
 	</dependencies>
 
