@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package fr.flight_tracking.proto;
+
+import 'fr/flight_tracking/proto/Position.proto';
+import 'fr/flight_tracking/proto/Autopilot.proto';
+import 'fr/flight_tracking/proto/Fuel.proto';
+import 'fr/flight_tracking/proto/Light.proto';
+import 'fr/flight_tracking/proto/Panel.proto';
+import 'fr/flight_tracking/proto/SurfaceControl.proto';
+
+option java_outer_classname = "AircraftState";
+option java_package = "fr.flight_tracking.kafka.model";
+
+message AircraftState {
+
+  Position position = 1;
+  Fuel fuel = 2;
+  Autopilot autopilot = 3;
+  Light light = 4;
+  Panel panel = 5;
+  SurfaceControl surfaceControl = 6;
+
+  uint32 groundSpeed = 7 ;
+
+  uint32 indicatedSpeed = 8 ;
+
+  uint32   trueAirSpeed = 9;
+
+  uint32 heading = 10;
+
+  uint32  magneticTrack = 11;
+
+  float  altimeterQnhParameter = 12;
+
+  float  outsidePressure = 13;
+
+  bool isAutobrakeOn = 14;
+
+  bool isDoorOpen = 15;
+
+  uint32 verticalSpeed = 16;
+
+  bool isParkingBrakeSet = 17;
+
+  bool isGearPositionIsUp = 18;
+
+  bool isEnginesStart = 19;
+
+  string engineType = 20;
+
+}

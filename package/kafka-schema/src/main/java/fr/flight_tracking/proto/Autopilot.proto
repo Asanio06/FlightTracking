@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package fr.flight_tracking.proto;
+
+option java_package = "fr.flight_tracking.kafka.model";
+
+
+message Autopilot{
+  bool isAvailable = 1;
+  bool isMasterActive = 2;
+}

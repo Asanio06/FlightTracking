@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package fr.flight_tracking.proto;
+
+option java_package = "fr.flight_tracking.kafka.model";
+
+
+message SurfaceControl{
+  bool isFlapsAvailable = 1;
+  bool isFlapsOn = 2;
+
+  bool isSpoilerAvailable = 3;
+  bool isSpoilerArm = 4;
+  bool isSpoilerOn = 5;
+}

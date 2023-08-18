@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package fr.flight_tracking.proto;
+
+option java_package = "fr.flight_tracking.kafka.model";
+
+
+message Light {
+  bool isNavigationActive = 1;
+  bool  isBeaconActive = 2;
+  bool isLandingActive = 3;
+  bool isTaxiActive = 4;
+  bool isStrobesActive = 5;
+  bool isInstrumentsActive = 6;
+  bool isRecognitionActive = 7;
+  bool isWingActive = 8;
+  bool isLogoLightActive = 9;
+  bool isCabinLightActive = 10;
+}
