@@ -1,57 +1,37 @@
 syntax = "proto3";
-
 package fr.flight_tracking.proto;
 
 option java_package = "fr.flight_tracking.kafka.model";
 option java_multiple_files = true;
 
-
-
 message AircraftState {
-
   Position position = 1;
   Fuel fuel = 2;
   Autopilot autopilot = 3;
   Light light = 4;
   Panel panel = 5;
   SurfaceControl surfaceControl = 6;
-
-  uint32 groundSpeed = 7 ;
-
-  uint32 indicatedSpeed = 8 ;
-
-  uint32  trueAirSpeed = 9;
-
+  uint32 groundSpeed = 7;
+  uint32 indicatedSpeed = 8;
+  uint32 trueAirSpeed = 9;
   uint32 heading = 10;
-
-  uint32  magneticTrack = 11;
-
-  float  altimeterQnhParameter = 12;
-
-  float  outsidePressure = 13;
-
+  uint32 magneticTrack = 11;
+  float altimeterQnhParameter = 12;
+  float outsidePressure = 13;
   bool isAutobrakeOn = 14;
-
   bool isDoorOpen = 15;
-
   uint32 verticalSpeed = 16;
-
   bool isParkingBrakeSet = 17;
-
   bool isGearPositionIsUp = 18;
-
   bool isEnginesStart = 19;
-
   string engineType = 20;
-
 
   message Position {
     double longitude = 1;
     double latitude = 2;
     int32 altitude = 3;
   }
-
-  message Autopilot{
+  message Autopilot {
     bool isAvailable = 1;
     bool isMasterActive = 2;
   }
@@ -59,10 +39,9 @@ message AircraftState {
     float totalQuantity = 1;
     float totalQuantityWeight = 2;
   }
-
   message Light {
     bool isNavigationActive = 1;
-    bool  isBeaconActive = 2;
+    bool isBeaconActive = 2;
     bool isLandingActive = 3;
     bool isTaxiActive = 4;
     bool isStrobesActive = 5;
@@ -72,19 +51,15 @@ message AircraftState {
     bool isLogoLightActive = 9;
     bool isCabinLightActive = 10;
   }
-
   message Panel {
     bool isNoSmokingAlertActive = 1;
-    bool  isSeatbeltsSignActive = 2;
+    bool isSeatbeltsSignActive = 2;
   }
-
-  message SurfaceControl{
+  message SurfaceControl {
     bool isFlapsAvailable = 1;
     bool isFlapsOn = 2;
-
     bool isSpoilerAvailable = 3;
     bool isSpoilerArm = 4;
     bool isSpoilerOn = 5;
   }
-
 }

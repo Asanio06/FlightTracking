@@ -12,10 +12,23 @@
 	<artifactId>aircraft_data_receiver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>aircraft_data_receiver</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Recoit les données de l'avion et les transmet à kafka</description>
+
 	<properties>
 		<java.version>17</java.version>
+		<com.google.protobuf.version>3.24.0</com.google.protobuf.version>
+		<io.confluent.registry-plugin.version>7.3.3</io.confluent.registry-plugin.version>
+		<protobuf-dir>src/main/resources/proto</protobuf-dir>
 	</properties>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>confluent</id>
+			<name>Confluent</name>
+			<url>https://packages.confluent.io/maven/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -49,6 +62,12 @@
 			<artifactId>spring-kafka-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+			<version>${com.google.protobuf.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -56,6 +75,57 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>io.confluent</groupId>
+				<artifactId>kafka-schema-registry-maven-plugin</artifactId>
+				<version>${io.confluent.registry-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>proto-resources</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>download</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<schemaRegistryUrls>
+						<param>http://127.0.0.1:8081</param>
+					</schemaRegistryUrls>
+					<outputDirectory>${protobuf-dir}</outputDirectory>
+					<subjectPatterns>
+						<param>aircraft-state</param>
+					</subjectPatterns>
+					<versions>
+						<param>latest</param>
+					</versions>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.github.os72</groupId>
+				<artifactId>protoc-jar-maven-plugin</artifactId>
+				<version>3.11.4</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<inputDirectories>
+								<include>${project.basedir}/${protobuf-dir}</include>
+							</inputDirectories>
+							<outputTargets>
+								<outputTarget>
+									<type>java</type>
+									<addSources>main</addSources>
+									<outputDirectory>${project.basedir}/target/generated-sources</outputDirectory>
+								</outputTarget>
+							</outputTargets>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
