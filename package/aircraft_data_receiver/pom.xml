@@ -17,9 +17,19 @@
 	<properties>
 		<java.version>17</java.version>
 		<com.google.protobuf.version>3.24.0</com.google.protobuf.version>
-		<io.confluent.registry-plugin.version>7.3.3</io.confluent.registry-plugin.version>
+		<io.confluent.registry-plugin.version>7.4.0</io.confluent.registry-plugin.version>
+		<kafka-protobuf-serializer.version>7.4.0</kafka-protobuf-serializer.version>
+		<mapstruct.version>1.5.3.Final</mapstruct.version>
 		<protobuf-dir>src/main/resources/proto</protobuf-dir>
 	</properties>
+
+	<repositories>
+		<repository>
+			<id>confluent</id>
+			<name>Confluent</name>
+			<url>https://packages.confluent.io/maven/</url>
+		</repository>
+	</repositories>
 
 	<pluginRepositories>
 		<pluginRepository>
@@ -30,6 +40,11 @@
 	</pluginRepositories>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${mapstruct.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jdbc</artifactId>
@@ -68,6 +83,12 @@
 			<artifactId>protobuf-java</artifactId>
 			<version>${com.google.protobuf.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>io.confluent</groupId>
+			<artifactId>kafka-protobuf-serializer</artifactId>
+			<version>${kafka-protobuf-serializer.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -75,6 +96,21 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>${mapstruct.version}</version>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>io.confluent</groupId>

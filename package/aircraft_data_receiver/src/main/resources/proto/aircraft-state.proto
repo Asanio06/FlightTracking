@@ -25,41 +25,40 @@ message AircraftState {
   bool isGearPositionIsUp = 18;
   bool isEnginesStart = 19;
   string engineType = 20;
-
-  message Position {
-    double longitude = 1;
-    double latitude = 2;
-    int32 altitude = 3;
-  }
-  message Autopilot {
-    bool isAvailable = 1;
-    bool isMasterActive = 2;
-  }
-  message Fuel {
-    float totalQuantity = 1;
-    float totalQuantityWeight = 2;
-  }
-  message Light {
-    bool isNavigationActive = 1;
-    bool isBeaconActive = 2;
-    bool isLandingActive = 3;
-    bool isTaxiActive = 4;
-    bool isStrobesActive = 5;
-    bool isInstrumentsActive = 6;
-    bool isRecognitionActive = 7;
-    bool isWingActive = 8;
-    bool isLogoLightActive = 9;
-    bool isCabinLightActive = 10;
-  }
-  message Panel {
-    bool isNoSmokingAlertActive = 1;
-    bool isSeatbeltsSignActive = 2;
-  }
-  message SurfaceControl {
-    bool isFlapsAvailable = 1;
-    bool isFlapsOn = 2;
-    bool isSpoilerAvailable = 3;
-    bool isSpoilerArm = 4;
-    bool isSpoilerOn = 5;
-  }
+}
+message Position {
+  double longitude = 1;
+  double latitude = 2;
+  int32 altitude = 3;
+}
+message Autopilot {
+  bool isAvailable = 1;
+  bool isMasterActive = 2;
+}
+message Fuel {
+  float totalQuantity = 1;
+  float totalQuantityWeight = 2;
+}
+message Light {
+  bool isNavigationActive = 1;
+  bool isBeaconActive = 2;
+  bool isLandingActive = 3;
+  bool isTaxiActive = 4;
+  bool isStrobesActive = 5;
+  bool isInstrumentsActive = 6;
+  bool isRecognitionActive = 7;
+  bool isWingActive = 8;
+  bool isLogoLightActive = 9;
+  bool isCabinLightActive = 10;
+}
+message Panel {
+  bool isNoSmokingAlertActive = 1;
+  bool isSeatbeltsSignActive = 2;
+}
+message SurfaceControl {
+  bool isFlapsAvailable = 1;
+  bool isFlapsOn = 2;
+  bool isSpoilerAvailable = 3;
+  bool isSpoilerArm = 4;
+  bool isSpoilerOn = 5;
 }
