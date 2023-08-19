@@ -110,7 +110,7 @@
                     </schemaRegistryUrls>
                     <outputDirectory>${protobuf-dir}</outputDirectory>
                     <subjectPatterns>
-                        <param>AircraftState</param>
+                        <param>aircraft-state-topic-value</param>
                     </subjectPatterns>
                     <versions>
                         <param>latest</param>

@@ -5,21 +5,14 @@ spring:
     properties:
       schema.registry.url: http://localhost:8081
 
-
     consumer:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: io.confluent.kafka.serializers.protobuf.KafkaProtobufDeserializer
       auto-offset-reset: earliest
       properties:
-        protobuf:
-          value.subject.name.strategy: io.confluent.kafka.serializers.subject.RecordNameStrategy
-          schema.registry.url: http://localhost:8081
-          use.latest.version: true
-          value.type: fr.flight_tracking.kafka.model.AircraftState
-
         schema.registry.url: http://localhost:8081
         use.latest.version: true
-        value.subject.name.strategy: io.confluent.kafka.serializers.subject.RecordNameStrategy
+        value.subject.name.strategy: io.confluent.kafka.serializers.subject.TopicNameStrategy
 
 
 

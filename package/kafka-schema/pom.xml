@@ -90,12 +90,12 @@
                             <param>http://localhost:8081</param>
                         </schemaRegistryUrls>
                         <subjects>
-                            <AircraftState>
+                            <aircraft-state-topic-value>
                                 src/main/java/fr/flight_tracking/proto/AircraftState.proto
-                            </AircraftState>
+                            </aircraft-state-topic-value>
                         </subjects>
                         <schemaTypes>
-                            <AircraftState>PROTOBUF</AircraftState>
+                            <aircraft-state-topic-value>PROTOBUF</aircraft-state-topic-value>
                         </schemaTypes>
                     </configuration>
                 </plugin>
