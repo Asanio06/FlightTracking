@@ -1,5 +1,4 @@
 syntax = "proto3";
-package fr.flight_tracking.proto;
 
 option java_package = "fr.flight_tracking.kafka.model";
 option java_multiple_files = true;

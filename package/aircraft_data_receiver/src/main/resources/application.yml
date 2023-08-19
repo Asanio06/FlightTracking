@@ -1,3 +1,5 @@
+
+
 spring:
   datasource:
     url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:flightdb}
@@ -9,9 +11,24 @@ spring:
     bootstrap-servers: localhost:9092
     properties:
       schema.registry.url: http://localhost:8081
+
+
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: io.confluent.kafka.serializers.protobuf.KafkaProtobufSerializer
+      properties:
+        auto.register.schemas: false
+        schema.registry.url: http://localhost:8081
+        use.latest.version: true
+        value:
+          subject.name.strategy: io.confluent.kafka.serializers.subject.RecordNameStrategy
+
+      client-id: aircraft-data-receiver
+
+
+
+
+
 
 config:
   kafka:
@@ -19,3 +36,5 @@ config:
       name: "aircraft-state-topic"
       partitions: 6
       replicas: 1
+server:
+  port: 8070
