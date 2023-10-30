@@ -82,6 +82,12 @@
             <artifactId>kafka-streams-protobuf-serde</artifactId>
             <version>${kafka-protobuf-serializer.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.confluent.ksql</groupId>
+            <artifactId>ksqldb-api-client</artifactId>
+            <version>6.2.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -110,11 +116,21 @@
                     </schemaRegistryUrls>
                     <outputDirectory>${protobuf-dir}</outputDirectory>
                     <subjectPatterns>
+                        <param>flight-aircraft-history-topic-value</param>
                         <param>aircraft-state-topic-value</param>
                     </subjectPatterns>
                     <versions>
                         <param>latest</param>
+                        <param>latest</param>
                     </versions>
+                    <references>
+                        <flight-aircraft-history-topic-value>
+                            <reference>
+                                <name>aircraft-state-topic-value</name>
+                                <subject>aircraft-state-topic-value</subject>
+                            </reference>
+                        </flight-aircraft-history-topic-value>
+                    </references>
                 </configuration>
             </plugin>
             <plugin>

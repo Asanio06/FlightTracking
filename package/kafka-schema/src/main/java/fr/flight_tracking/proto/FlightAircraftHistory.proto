@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option java_package = "fr.flight_tracking.kafka.model";
+option java_multiple_files = true;
+
+import "AircraftState.proto";
+
+
+message FlightAircraftHistory {
+
+  repeated AircraftState aircraftStates = 1;
+
+}

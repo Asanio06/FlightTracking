@@ -13,13 +13,11 @@ spring:
         schema.registry.url: http://localhost:8081
         use.latest.version: true
         value.subject.name.strategy: io.confluent.kafka.serializers.subject.TopicNameStrategy
-
-
+      group-id: "live-map"
 
     streams:
       application-id: "live-map"
       bootstrap-servers: localhost:9092
-
 
 config:
   kafka:
@@ -27,3 +25,6 @@ config:
       name: "aircraft-state-topic"
       partitions: 6
       replicas: 1
+  ksqldb:
+    host: localhost
+    port: 8088

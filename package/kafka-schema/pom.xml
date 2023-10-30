@@ -93,10 +93,22 @@
                             <aircraft-state-topic-value>
                                 src/main/java/fr/flight_tracking/proto/AircraftState.proto
                             </aircraft-state-topic-value>
+                            <flight-aircraft-history-topic-value>
+                                src/main/java/fr/flight_tracking/proto/FlightAircraftHistory.proto
+                            </flight-aircraft-history-topic-value>
                         </subjects>
                         <schemaTypes>
                             <aircraft-state-topic-value>PROTOBUF</aircraft-state-topic-value>
+                            <flight-aircraft-history-topic-value>PROTOBUF</flight-aircraft-history-topic-value>
                         </schemaTypes>
+                        <references>
+                            <flight-aircraft-history-topic-value>
+                                <reference>
+                                    <name>aircraft-state-topic-value</name>
+                                    <subject>aircraft-state-topic-value</subject>
+                                </reference>
+                            </flight-aircraft-history-topic-value>
+                        </references>
                     </configuration>
                 </plugin>
             </plugins>

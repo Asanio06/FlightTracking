@@ -6,8 +6,8 @@ import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.annotation.EnableKafkaStreams;
 
 @SpringBootApplication
-@EnableKafkaStreams
 @EnableKafka
+@EnableKafkaStreams
 public class LiveMapApplication {
 
 	public static void main(String[] args) {

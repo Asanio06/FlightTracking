@@ -3,10 +3,12 @@ package fr.flight_tracking.live_map.topology;
 
 import fr.flight_tracking.kafka.model.AircraftState;
 import fr.flight_tracking.kafka.model.Position;
+import fr.flight_tracking.live_map.model.FlightAircraftStateHistoryImpl;
 import io.confluent.kafka.streams.serdes.protobuf.KafkaProtobufSerde;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.kstream.Consumed;
+import org.apache.kafka.streams.kstream.Materialized;
 import org.apache.kafka.streams.kstream.Produced;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,7 +16,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 import static io.confluent.kafka.serializers.AbstractKafkaSchemaSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG;
 import static io.confluent.kafka.serializers.protobuf.KafkaProtobufDeserializerConfig.SPECIFIC_PROTOBUF_VALUE_TYPE;
@@ -51,14 +52,16 @@ public class FlightHistoryTopology {
 
     @Autowired
     public void process(StreamsBuilder streamsBuilder) {
-
-
         var aircraftProtobufSerdes = getAircraftProtobufSerdes();
         var positionProtobufSerde = getPositionProtobufSerde();
 
         streamsBuilder
                 .stream(aircraftStateTopicName, Consumed.with(Serdes.String(), aircraftProtobufSerdes))
-                .mapValues((aircraftState -> aircraftState.getPosition()))
-                .to("aircraft-position-topic-2", Produced.with(Serdes.String(), positionProtobufSerde));
+                .groupByKey()
+                .aggregate(FlightAircraftStateHistoryImpl::new,
+                        ((key, aircraftState, flightAircraftStateHistory) -> flightAircraftStateHistory.addAircraftState(aircraftState)),
+                        Materialized.as()
+                )
+                .to("aircraft-position-topic", Produced.with(Serdes.String(), positionProtobufSerde));
     }
 }
