@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "AircraftState.proto";
+import "aircraft-state-topic-value.proto";
 
 option java_package = "fr.flight_tracking.kafka.model";
 option java_multiple_files = true;

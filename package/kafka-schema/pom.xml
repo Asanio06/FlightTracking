@@ -91,10 +91,10 @@
                         </schemaRegistryUrls>
                         <subjects>
                             <aircraft-state-topic-value>
-                                src/main/java/fr/flight_tracking/proto/AircraftState.proto
+                                src/main/java/fr/flight_tracking/proto/aircraft-state-topic-value.proto
                             </aircraft-state-topic-value>
                             <flight-aircraft-history-topic-value>
-                                src/main/java/fr/flight_tracking/proto/FlightAircraftHistory.proto
+                                src/main/java/fr/flight_tracking/proto/flight-aircraft-history-topic-value.proto
                             </flight-aircraft-history-topic-value>
                         </subjects>
                         <schemaTypes>
